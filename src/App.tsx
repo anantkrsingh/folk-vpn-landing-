@@ -121,7 +121,7 @@ const privacySections = [
   },
   {
     title: 'Contact',
-    body: 'For privacy questions, support, or deletion requests, email anantkrplay@gmail.com. This policy was last updated on September 21, 2026.',
+    body: 'For privacy questions, support, or deletion requests, email kavachinnovation@gmail.com. This policy was last updated on September 21, 2026.',
   },
 ]
 
@@ -416,7 +416,7 @@ function HomePage() {
             Google Play
           </a>
           <a href="/privacy">Privacy Policy</a>
-          <a href="mailto:anantkrplay@gmail.com">Support</a>
+          <a href="mailto:kavachinnovation@gmail.com">Support</a>
         </div>
       </footer>
     </main>
@@ -462,7 +462,7 @@ function PrivacyPage() {
           <a href={playStoreUrl} target="_blank">
             Google Play
           </a>
-          <a href="mailto:anantkrplay@gmail.com">Support</a>
+          <a href="mailto:kavachinnovation@gmail.com">Support</a>
         </div>
       </footer>
     </main>
