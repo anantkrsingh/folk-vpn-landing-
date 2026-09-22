@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Roboto+Condensed:wght@600;700&display=swap');
+
+:root {
+  --ink: #090806;
+  --muted: #6f6a61;
+  --soft: #f7f1e7;
+  --paper: #fffaf1;
+  --sand: #e7dccb;
+  --sand-deep: #cfc4b3;
+  --line: rgba(9, 8, 6, 0.12);
+  --green: #31d56f;
+  --green-deep: #0d9f4d;
+  --blue: #1198ff;
+  --shadow: rgba(61, 49, 32, 0.16);
+  --font-sans: 'Geist', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'Cascadia Code', 'Cascadia Mono', 'Cascadia', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-condensed: 'Roboto Condensed', 'Arial Narrow', var(--font-sans);
+
+  color: var(--ink);
+  background: #f3ede3;
+  font-family: var(--font-sans);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+#root {
+  min-height: 100svh;
+}
