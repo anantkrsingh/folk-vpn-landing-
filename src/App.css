@@ -925,3 +925,32 @@ h2 {
     height: 32px;
   }
 }
+
+/* Delete account page */
+.delete-account-content {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.delete-account-content article a,
+.delete-cta a {
+  color: var(--green-deep);
+  font-weight: 650;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.delete-account-content article a:hover,
+.delete-cta a:hover {
+  opacity: 0.75;
+}
+
+.delete-cta {
+  margin-bottom: 80px;
+}
+
+@media (max-width: 760px) {
+  .delete-account-content {
+    grid-template-columns: 1fr;
+  }
+}

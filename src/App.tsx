@@ -101,11 +101,15 @@ const stats = [
 const privacySections = [
   {
     title: 'Information we collect',
-    body: 'Folk VPN is designed to work without registration. We do not ask for your name, email address, password, or browsing history. The app may receive limited device, app performance, diagnostics, and advertising identifiers through platform services so the app can run, measure stability, and support ads or purchases.',
+    body: 'Folk VPN can be used without an account, or you may choose to create one using your name, email address, and password, or by signing in with Google. When you create an account, we collect the information you provide during registration. The app may also receive limited device, app performance, diagnostics, and advertising identifiers through platform services so the app can run, measure stability, and support ads or purchases.',
+  },
+  {
+    title: 'Account creation and authentication',
+    body: 'You may register with an email address and password, or use Google Sign-In. If you use Google Sign-In, we receive your name and email address from Google as permitted by your Google account settings. Passwords are stored using industry-standard hashing and are never stored in plain text. You can use Folk VPN without creating an account at any time.',
   },
   {
     title: 'How we use information',
-    body: 'We use limited technical information to provide VPN connectivity, keep the app reliable, prevent abuse, understand crashes, show ads where applicable, and process in-app purchases through the app store. We do not sell your browsing activity.',
+    body: 'We use your account information to provide VPN connectivity, manage your subscription or preferences, keep the app reliable, prevent abuse, understand crashes, show ads where applicable, and process in-app purchases. We do not sell your personal information or browsing activity.',
   },
   {
     title: 'VPN traffic and logs',
@@ -113,7 +117,11 @@ const privacySections = [
   },
   {
     title: 'Third-party services',
-    body: 'Folk VPN may use services from Google Play, advertising networks, analytics providers, payment processors, DNS providers, and infrastructure partners. Their processing is governed by their own privacy terms.',
+    body: 'Folk VPN may use services from Google (authentication and Play), advertising networks, analytics providers, payment processors, DNS providers, and infrastructure partners. Their processing is governed by their own privacy terms.',
+  },
+  {
+    title: 'Account deletion',
+    body: 'You can request deletion of your account and associated personal data at any time by emailing kavachinnovation@gmail.com with the subject line "Delete My Account". We will process your request and confirm deletion within 30 days.',
   },
   {
     title: 'Children and families',
@@ -121,7 +129,7 @@ const privacySections = [
   },
   {
     title: 'Contact',
-    body: 'For privacy questions, support, or deletion requests, email kavachinnovation@gmail.com. This policy was last updated on September 21, 2026.',
+    body: 'For privacy questions, support, or deletion requests, email kavachinnovation@gmail.com. This policy was last updated on October 20, 2026.',
   },
 ]
 
@@ -155,7 +163,7 @@ function Icon({ name }: { name: 'shield' | 'bolt' | 'globe' | 'lock' }) {
   )
 }
 
-function Header({ privacy = false }: { privacy?: boolean }) {
+function Header({ privacy = false, deleteAccount = false }: { privacy?: boolean; deleteAccount?: boolean }) {
   return (
     <header className="site-header">
       <a className="brand" href="/" aria-label="Folk VPN home">
@@ -165,9 +173,10 @@ function Header({ privacy = false }: { privacy?: boolean }) {
         <span>Folk VPN</span>
       </a>
       <nav aria-label="Primary navigation">
-        {!privacy && <a href="#features">Features</a>}
-        {!privacy && <a href="#screens">Screens</a>}
+        {!privacy && !deleteAccount && <a href="#features">Features</a>}
+        {!privacy && !deleteAccount && <a href="#screens">Screens</a>}
         <a href="/privacy">Privacy</a>
+        <a href="/delete-account">Delete Account</a>
       </nav>
     </header>
   )
@@ -416,6 +425,7 @@ function HomePage() {
             Google Play
           </a>
           <a href="/privacy">Privacy Policy</a>
+          <a href="/delete-account">Delete Account</a>
           <a href="mailto:kavachinnovation@gmail.com">Support</a>
         </div>
       </footer>
@@ -432,7 +442,7 @@ function PrivacyPage() {
         <h1>Folk VPN privacy policy</h1>
         <p>
           This policy explains how Folk VPN handles information when you use the
-          Android app and related support channels.
+          app and related support channels.
         </p>
       </section>
       <section className="policy-list">
@@ -462,6 +472,85 @@ function PrivacyPage() {
           <a href={playStoreUrl} target="_blank">
             Google Play
           </a>
+          <a href="/delete-account">Delete Account</a>
+          <a href="mailto:kavachinnovation@gmail.com">Support</a>
+        </div>
+      </footer>
+    </main>
+  )
+}
+
+function DeleteAccountPage() {
+  return (
+    <main className="privacy-page">
+      <Header deleteAccount />
+      <section className="privacy-hero">
+        <p className="eyebrow">Account Management</p>
+        <h1>Delete your account</h1>
+        <p>
+          You can request permanent deletion of your Folk VPN account and all
+          associated personal data at any time.
+        </p>
+      </section>
+      <section className="policy-list delete-account-content">
+        <article>
+          <h2>How to request deletion</h2>
+          <p>
+            Send an email to{' '}
+            <a href="mailto:kavachinnovation@gmail.com?subject=Delete%20My%20Account">
+              kavachinnovation@gmail.com
+            </a>{' '}
+            with the subject line <strong>"Delete My Account"</strong>. Include
+            the email address associated with your account so we can locate and
+            remove your data.
+          </p>
+        </article>
+        <article>
+          <h2>What gets deleted</h2>
+          <p>
+            Upon a verified request, we will permanently delete your account
+            credentials, profile information (name and email), and any
+            account-linked preferences or subscription records. Data that has
+            been anonymised or aggregated for analytics purposes cannot be
+            individually identified or removed.
+          </p>
+        </article>
+        <article>
+          <h2>How long it takes</h2>
+          <p>
+            We will confirm receipt of your request and complete the deletion
+            within <strong>30 days</strong>. You will receive a confirmation
+            email once your account and data have been removed.
+          </p>
+        </article>
+        <article>
+          <h2>Using the app without an account</h2>
+          <p>
+            Folk VPN works without an account. If you prefer not to delete your
+            account right now, you can simply stop using the app. Your VPN
+            connection is never tied to your account status.
+          </p>
+        </article>
+      </section>
+      <section className="policy-note delete-cta">
+        <h2>Ready to delete?</h2>
+        <p>
+          Email us at{' '}
+          <a href="mailto:kavachinnovation@gmail.com?subject=Delete%20My%20Account">
+            kavachinnovation@gmail.com
+          </a>{' '}
+          with the subject <strong>"Delete My Account"</strong> and we'll take
+          care of the rest.
+        </p>
+      </section>
+      <footer className="site-footer">
+        <div>
+          <strong>Folk VPN</strong>
+          <p>Secure & Fast Proxy by Hotshot Labs.</p>
+        </div>
+        <div className="footer-links">
+          <a href="/">Home</a>
+          <a href="/privacy">Privacy Policy</a>
           <a href="mailto:kavachinnovation@gmail.com">Support</a>
         </div>
       </footer>
@@ -470,9 +559,10 @@ function PrivacyPage() {
 }
 
 function App() {
-  const isPrivacyPage = window.location.pathname === '/privacy'
-
-  return isPrivacyPage ? <PrivacyPage /> : <HomePage />
+  const path = window.location.pathname
+  if (path === '/privacy') return <PrivacyPage />
+  if (path === '/delete-account') return <DeleteAccountPage />
+  return <HomePage />
 }
 
 export default App
