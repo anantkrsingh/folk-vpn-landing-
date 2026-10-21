@@ -1,23 +1,97 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Roboto+Condensed:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&family=Ubuntu+Mono:wght@400;700&family=Ubuntu+Condensed&display=swap');
+
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import './App.css' layer(components);
+
+@theme inline {
+  --color-foreground: var(--text);
+  --color-background: var(--bg);
+  --color-ink: var(--bg);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-sand: var(--sand);
+  --color-brand: var(--green);
+  --color-brand-deep: var(--green-deep);
+}
+
+@theme {
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-float-chip: float 6s ease-in-out infinite;
+  --animate-ring: ring-out 4.5s ease-out infinite;
+  --animate-pulse-dot: pulse-dot 1.8s ease-out infinite;
+  --animate-marquee: marquee 28s linear infinite;
+
+  @keyframes float {
+    50% {
+      translate: 0 -12px;
+    }
+  }
+
+  @keyframes ring-out {
+    0% {
+      opacity: 0.9;
+      scale: 0.8;
+    }
+    100% {
+      opacity: 0;
+      scale: 2.1;
+    }
+  }
+
+  @keyframes pulse-dot {
+    0% {
+      box-shadow: 0 0 0 0 rgb(49 213 111 / 0.7);
+    }
+    100% {
+      box-shadow: 0 0 0 10px rgb(49 213 111 / 0);
+    }
+  }
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+/* Fade-and-rise as an element scrolls in, where scroll-driven animations exist */
+@utility reveal {
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+}
 
 :root {
-  --ink: #090806;
-  --muted: #6f6a61;
-  --soft: #f7f1e7;
-  --paper: #fffaf1;
+  --bg: #05080d;
+  --surface: #0b121a;
+  --surface-2: #111b26;
+  --text: #e6edf5;
+  --muted: #8693a4;
   --sand: #e7dccb;
-  --sand-deep: #cfc4b3;
-  --line: rgba(9, 8, 6, 0.12);
+  --line: rgba(255, 255, 255, 0.08);
   --green: #31d56f;
-  --green-deep: #0d9f4d;
+  --green-deep: #2bc565;
   --blue: #1198ff;
-  --shadow: rgba(61, 49, 32, 0.16);
-  --font-sans: 'Geist', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-mono: 'Cascadia Code', 'Cascadia Mono', 'Cascadia', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  --font-condensed: 'Roboto Condensed', 'Arial Narrow', var(--font-sans);
+  --shadow: rgba(0, 0, 0, 0.55);
+  --font-sans: 'Ubuntu', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'Ubuntu Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-condensed: 'Ubuntu Condensed', 'Arial Narrow', var(--font-sans);
 
-  color: var(--ink);
-  background: #f3ede3;
+  color: var(--text);
+  background: var(--bg);
+  color-scheme: dark;
   font-family: var(--font-sans);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -25,31 +99,25 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-}
+@layer base {
+  html {
+    line-height: normal;
+    scroll-behavior: smooth;
+  }
 
-html {
-  scroll-behavior: smooth;
-}
+  body {
+    min-width: 320px;
+  }
 
-body {
-  min-width: 320px;
-  margin: 0;
-}
+  h1,
+  h2,
+  h3 {
+    font-weight: 700;
+  }
 
-button,
-a {
-  font: inherit;
-}
-
-a {
-  color: inherit;
-}
-
-img {
-  display: block;
-  max-width: 100%;
+  p {
+    margin-bottom: 1em;
+  }
 }
 
 #root {
